@@ -3,12 +3,26 @@
 </div>
 
 <div align="center">
-  <b>Mecha</b> - debugger and custom plugin loader for the League of Legends client
+  Debugger and plugin loader for the League of Legends client
 </div>
 
 <br>
 
-<div>
+<div id="announcement">
+  <h1>End of the Line</h1>
+
+  <b>It is with a heavy heart that I announce with that as of June 16th, 2021, further development of Mecha has been put on an indefinite hold due to security concerns raised by Riot Games.</b> 
+
+Simply put, <b>Mecha</b> had too much power at hand and exposed various security issues that I failed to rectify.
+
+While this situation is rather unfortunate for every party involved, I must admit that Riot Games has taken a completely valid approach and is merely protecting their playerbase from potentially malicious exploits.
+
+Even though <b>Mecha</b> technically still functions as intended, I urge everyone to unhook their client immediately.  
+
+I never expected <b>Mecha</b> to get this much attention, and I wish I could thank everyone for putting trust in it and trying it out. 
+
+Please accept my sincere apologies if my tool has caused any issues whatsoever.
+</div>
 
 <div id="usage">
 

@@ -24,7 +24,7 @@ namespace Wrapper.Hooks
             {
                 string leaguePath = League.GetLeaguePath();
 
-                DialogResult dialogResult = MessageBox.Show("Remove injection files? This will close your client.", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult dialogResult = MessageBox.Show(@"Remove injection files? This will close your client.", @"Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (dialogResult == DialogResult.Yes)
                 {
@@ -37,19 +37,19 @@ namespace Wrapper.Hooks
                     }
                     catch
                     {
-                        MessageBox.Show("Failed removing injection files. You may remove them manually.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show(@"Failed removing injection files. You may remove them manually.", @"Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         
                         return;
                     }
                 }
 
-                MessageBox.Show("Successfully unhooked.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(@"Successfully unhooked.", @"Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 
                 return;
             } 
             else 
             {
-                MessageBox.Show("Successfully unhooked. You may remove injection files manually.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(@"Successfully unhooked. You may remove injection files manually.", @"Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 
                 return;
             }

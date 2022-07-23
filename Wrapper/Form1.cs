@@ -93,7 +93,7 @@ namespace Wrapper
         {
             if (!League.IsLeagueOpen())
             {
-                MessageBox.Show("You must open your (hooked) League of Legends client!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"You must open your (hooked) League of Legends client!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return;
             }
@@ -137,7 +137,7 @@ namespace Wrapper
             }
             else
             {
-                MessageBox.Show("Port must be between 1-65535!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Port must be between 1-65535!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             if (!Directory.Exists(pluginsTextBox.Text))
@@ -167,7 +167,7 @@ namespace Wrapper
         {
             if (!Directory.Exists(Constants.configManager.GetPluginsPath()))
             {
-                MessageBox.Show("Plugins directory does not exist or is not found. Please update the directory.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Plugins directory does not exist or is not found. Please update the directory.", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return;
             }

@@ -1,7 +1,9 @@
 ﻿using Microsoft.Win32;
+
 using System;
 using System.IO;
 using System.Windows.Forms;
+
 using Wrapper.Util;
 
 namespace Wrapper.Hooks
@@ -14,29 +16,34 @@ namespace Wrapper.Hooks
 
             Constants.configManager.WriteDefault();
 
-            if (!File.Exists(Constants.injectorPath) || !File.Exists(Constants.payloadPath))
+            if (!File.Exists(Constants.injectorPath))
             {
-                MessageBox.Show("You are missing needed files for hooking. Please download a fresh version of Mecha or recompile your project.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-               
+                MessageBox.Show($@"Not exist {Constants.injectorPath}");
+                return;
+            }
+
+            if (!File.Exists(Constants.payloadPath))
+            {
+                MessageBox.Show($@"Not exist {Constants.payloadPath}");
                 return;
             }
 
             if (!League.IsLeagueOpen())
             {
-                MessageBox.Show("You must launch your League of Legends client before hooking!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"You must launch your League of Legends client before hooking!", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return;
             }
 
             string leaguePath = League.GetLeaguePath();
 
-            DialogResult dialogResult = MessageBox.Show("Mecha must terminate your League of Legends client process before hooking. Continue?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult dialogResult = MessageBox.Show(@"Mecha must terminate your League of Legends client process before hooking. Continue?", @"Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (dialogResult == DialogResult.Yes)
             {
                 League.KillLeagueProcesses();
             }
-            else 
+            else
             {
                 return;
             }
@@ -50,10 +57,10 @@ namespace Wrapper.Hooks
             {
                 File.Copy(Constants.injectorPath, leaguePath + "mecha_injector.exe", true);
                 File.Copy(Constants.payloadPath, leaguePath + "mecha_payload.dll", true);
-            } 
-            catch 
+            }
+            catch
             {
-                MessageBox.Show("An error occurred while copying files needed for hooking. Unhook and try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"An error occurred while copying files needed for hooking. Unhook and try again.", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return;
             }
@@ -61,7 +68,7 @@ namespace Wrapper.Hooks
             RegistryKey registryKey = Registry.LocalMachine.CreateSubKey(Constants.subkey);
             registryKey.SetValue("debugger", Path.Combine(leaguePath, "mecha_injector.exe"));
 
-            MessageBox.Show("Successfully hooked. You may restart your League of Legends client to see the changes.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(@"Successfully hooked. You may restart your League of Legends client to see the changes.", @"Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

@@ -7,7 +7,7 @@
 #include <iostream>
 
 // Libs
-#include <detours.h>
+#include <detours/detours.h>
 #include <nlohmann/json.hpp>
 
 // CEF
@@ -164,9 +164,12 @@ void CEF_CALLBACK hk_on_before_command_line_processing(
   struct _cef_command_line_t* command_line)
 {
   const char* port = !config["DebuggingPort"].is_null() ? config["DebuggingPort"].get_ref<std::string&>().c_str() : "8888";
+  auto a = create_cef_string("remote-debugging-port");
+  auto b = create_cef_string(port);
+  auto c = create_cef_string("ignore-certificate-errors");
 
-  command_line->append_switch_with_value(command_line, &create_cef_string("remote-debugging-port"), &create_cef_string(port));
-  command_line->append_switch(command_line, &create_cef_string("ignore-certificate-errors"));
+  command_line->append_switch_with_value(command_line, &a, &b);
+  command_line->append_switch(command_line, &c);
 }
 
 // The first function to be ran, essentially the entry point.

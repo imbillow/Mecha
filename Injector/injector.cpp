@@ -1,5 +1,5 @@
 #include <Windows.h>
-#include <detours.h>
+#include <detours/detours.h>
 
 void debug(const LPDEBUG_EVENT dbg_evt)
 {
@@ -21,7 +21,7 @@ int main(int argc, char* argv[])
   char command_line[4096]{};
 
   // Builds the command line string.
-  for (unsigned int arg = 1; arg < argc; arg++) {
+  for (int arg = 1; arg < argc; arg++) {
     strcat_s(command_line, "\"");
     strcat_s(command_line, argv[arg]);
     strcat_s(command_line, "\" ");
